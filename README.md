@@ -1,0 +1,1 @@
+This will contain all application and component implications associated with my stock portfolio application.

@@ -14,5 +14,10 @@ router.get('/', function(req, res, next) {
   res.json(portfolioData);
 });
 
+//return portfolio for given portfolio id
+router.get('/:id', function(req, res, next) {
+  console.log("Portfolio ID parameter is: " + req.params.id);
+});
+
 
 module.exports = router;

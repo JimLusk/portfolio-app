@@ -4,6 +4,11 @@ var express = require('express');
 var router = express.Router();
 //temporary declaration of mock data portfolios
 var portfolioData = require('../data/portfolio-data-100-records.json');
+var pgp = require('pg-promise')(/* options */)
+var db = pgp('postgres://admin:admin@localhost:5432/portfolio-db')
+
+
+//const db = require('../services/db');
 
 
 
@@ -11,6 +16,14 @@ var portfolioData = require('../data/portfolio-data-100-records.json');
 //TODO: Update this to return a default portfolio JSON listing.
 //TODO: Update this to return desired portfolio from relational database.
 router.get('/', function(req, res, next) {
+  //Get all portfolio and positions from database
+  db.any("SELECT * from positions")
+  .then(function (data) {
+    console.log('DATA:', data)
+  })
+  .catch(function (error) {
+    console.log('ERROR:', error)
+  })
   res.json(portfolioData);
 });
 

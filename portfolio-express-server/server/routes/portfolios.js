@@ -1,6 +1,7 @@
 
 
 var express = require('express');
+const { response } = require('../app');
 var router = express.Router();
 //temporary declaration of mock data portfolios
 var portfolioData = require('../data/portfolio-data-100-records.json');
@@ -19,12 +20,12 @@ router.get('/', function(req, res, next) {
   //Get all portfolio and positions from database
   db.any("SELECT * from positions")
   .then(function (data) {
-    console.log('DATA:', data)
+    res.json(data);
   })
   .catch(function (error) {
-    console.log('ERROR:', error)
+    res.status(500).send(error);
+    console.log('ERROR:', error);
   })
-  res.json(portfolioData);
 });
 
 //return portfolio for given portfolio id

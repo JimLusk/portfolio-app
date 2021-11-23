@@ -14,8 +14,12 @@ var db = pgp('postgres://admin:admin@localhost:5432/portfolio-db')
 
 
 /* GET portfolios listing. */
-//TODO: Update this to return a default portfolio JSON listing.
-//TODO: Update this to return desired portfolio from relational database.
+//TODO: Externalize SQL to configuration
+//TODO: Format return of all portfolios
+//TODO: Handle return of single portfolios
+//TODO: Security: Think about and only enable access to entitled users
+//TODO: Add position to portfolio
+//TODO: Get real time prices for portfolio holdings
 router.get('/', function(req, res, next) {
   //Get all portfolio and positions from database
   db.any("SELECT * from positions")
